@@ -1,0 +1,27 @@
+<svg width="920" height="520" viewBox="0 0 920 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">PhishGuard AI Code Scanning preview</title>
+  <desc id="desc">A safe mock GitHub Code Scanning alert showing PhishGuard AI SARIF output for a reserved documentation URL.</desc>
+  <rect width="920" height="520" rx="18" fill="#f6f8fa"/>
+  <rect x="36" y="34" width="848" height="452" rx="14" fill="#ffffff" stroke="#d0d7de"/>
+
+  <rect x="36" y="34" width="848" height="60" rx="14" fill="#24292f"/>
+  <text x="66" y="72" fill="#f6f8fa" font-family="Segoe UI, Arial, sans-serif" font-size="20" font-weight="700">GitHub Code Scanning</text>
+  <text x="758" y="72" fill="#8b949e" font-family="Segoe UI, Arial, sans-serif" font-size="14">demo preview</text>
+
+  <rect x="66" y="124" width="190" height="36" rx="18" fill="#fff8c5" stroke="#d4a72c"/>
+  <circle cx="88" cy="142" r="7" fill="#bf8700"/>
+  <text x="104" y="147" fill="#6e4b00" font-family="Segoe UI, Arial, sans-serif" font-size="14" font-weight="700">1 open warning</text>
+
+  <text x="66" y="198" fill="#24292f" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="700">PhishGuard AI detected a suspicious URL</text>
+  <text x="66" y="226" fill="#57606a" font-family="Segoe UI, Arial, sans-serif" font-size="15">SARIF result uploaded from a repository-owned safe test input.</text>
+
+  <rect x="66" y="260" width="788" height="118" rx="10" fill="#f6f8fa" stroke="#d0d7de"/>
+  <text x="94" y="294" fill="#24292f" font-family="Consolas, 'Courier New', monospace" font-size="15" font-weight="700">security/urls.txt:2</text>
+  <text x="94" y="324" fill="#57606a" font-family="Segoe UI, Arial, sans-serif" font-size="15">https://example.test/login/verify</text>
+  <text x="94" y="354" fill="#8250df" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">rule: phishguard-url-risk</text>
+  <text x="604" y="354" fill="#bf8700" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">severity: warning</text>
+
+  <rect x="66" y="410" width="788" height="44" rx="8" fill="#ddf4ff" stroke="#54aeff"/>
+  <text x="94" y="438" fill="#0969da" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="700">Safe demo data only:</text>
+  <text x="236" y="438" fill="#24292f" font-family="Segoe UI, Arial, sans-serif" font-size="15">use reserved domains and synthetic examples in public repositories.</text>
+</svg>

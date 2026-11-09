@@ -1,0 +1,17 @@
+{
+  "name": "phishguard-ai-root",
+  "version": "1.0.0",
+  "description": "PhishGuard AI — Real-Time Windows Anti-Phishing Protection System",
+  "scripts": {
+    "start": "npm start --prefix apps/desktop",
+    "service": "npm start --prefix services/local-security-service",
+    "test": "node tests/integration_tests/test_security_service.js"
+  },
+  "keywords": [
+    "phishing",
+    "security",
+    "windows"
+  ],
+  "author": "PhishGuard AI Team",
+  "license": "MIT"
+}

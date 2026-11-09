@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "phishguard-ai"
+version = "0.5.1"
+description = "Explainable offline phishing detection for URLs and email"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [
+  { name = "Omobolaji Adeyan", email = "omobolaji.adeyan@gmail.com" },
+]
+keywords = [
+  "cybersecurity",
+  "email-security",
+  "phishing",
+  "sarif",
+  "security-automation",
+  "url-analysis",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Information Technology",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Security",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/omobolajiadeyan/phishguard-ai"
+Documentation = "https://github.com/omobolajiadeyan/phishguard-ai#readme"
+Issues = "https://github.com/omobolajiadeyan/phishguard-ai/issues"
+Changelog = "https://github.com/omobolajiadeyan/phishguard-ai/blob/main/CHANGELOG.md"
+Marketplace = "https://github.com/marketplace/actions/phishguard-ai-phishing-detector"
+Repository = "https://github.com/omobolajiadeyan/phishguard-ai"
+Security = "https://github.com/omobolajiadeyan/phishguard-ai/security/policy"
+
+[project.scripts]
+phishguard = "phishguard:main"
+
+[tool.setuptools]
+py-modules = ["domain_age", "email_auth", "features", "model", "phishguard", "psl", "redirect", "reporting", "server"]
+
+[tool.setuptools.data-files]
+"data" = ["data/public_suffix_list.dat"]
+"web" = ["web/index.html", "web/app.js", "web/public-suffix.js", "web/scoring.js", "web/style.css"]

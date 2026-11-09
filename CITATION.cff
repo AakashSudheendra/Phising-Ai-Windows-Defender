@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If PhishGuard AI supports your work, please cite the project."
+title: "PhishGuard AI"
+type: software
+authors:
+  - family-names: "Adeyan"
+    given-names: "Omobolaji"
+    email: "omobolaji.adeyan@gmail.com"
+    website: "https://www.linkedin.com/in/oeadeyan"
+repository-code: "https://github.com/omobolajiadeyan/phishguard-ai"
+url: "https://github.com/omobolajiadeyan/phishguard-ai"
+license: MIT
+version: 0.4.0
+date-released: 2026-06-09

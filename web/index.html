@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PhishGuard AI — Explainable Phishing Detection</title>
+  <meta name="description" content="Explainable, offline phishing detection for URLs and email. Paste a URL or email to see a verdict with a feature-level explanation." />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M12 2.5 4 5.75v5.6c0 5.1 3.4 9.53 8 10.65 4.6-1.12 8-5.55 8-10.65v-5.6L12 2.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="m8.7 12.3 2.4 2.4 4.4-4.9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h1>PhishGuard<span class="brand-accent">AI</span></h1>
+    </div>
+    <p class="eyebrow">LOCAL-FIRST SECURITY ANALYSIS</p>
+    <h2>See the signals behind the verdict.</h2>
+    <p class="tagline">Analyze a URL or email without sending it to a third-party service. PhishGuard turns structural signals into a risk score you can inspect.</p>
+    <div class="header-actions">
+      <a class="primary-link" href="#scanner">Analyze a sample</a>
+      <a href="https://github.com/omobolajiadeyan/phishguard-ai" target="_blank" rel="noopener">Review the source<span aria-hidden="true"> &rarr;</span></a>
+    </div>
+    <ul class="trust-strip" aria-label="Product properties">
+      <li><strong>Local</strong><span>Browser scoring</span></li>
+      <li><strong>Explainable</strong><span>Feature-level reasons</span></li>
+      <li><strong>Portable</strong><span>CLI · API · SARIF</span></li>
+    </ul>
+  </header>
+
+  <main>
+    <section class="section-intro" id="scanner">
+      <p class="eyebrow">INTERACTIVE SCANNER</p>
+      <h2>Inspect a message or destination</h2>
+      <p>Start with the synthetic examples already provided, or enter your own input. Nothing entered here leaves your browser.</p>
+    </section>
+    <div class="check-card">
+      <nav class="tabs" role="tablist">
+        <button type="button" id="tab-url" class="tab active" data-tab="url" role="tab" aria-selected="true" aria-controls="panel-url">URL</button>
+        <button type="button" id="tab-email" class="tab" data-tab="email" role="tab" aria-selected="false" tabindex="-1" aria-controls="panel-email">Email</button>
+      </nav>
+
+      <section id="panel-url" class="panel" role="tabpanel" aria-labelledby="tab-url">
+        <form id="url-form">
+          <label for="url-input">URL to analyze</label>
+          <input id="url-input" name="url" type="text" placeholder="https://paypa1-secure-login.xyz/verify" autocomplete="off" spellcheck="false" required />
+          <button type="submit"><span>Check URL</span></button>
+        </form>
+      </section>
+
+      <section id="panel-email" class="panel hidden" role="tabpanel" aria-labelledby="tab-email">
+        <form id="email-form">
+          <label for="email-subject">Subject</label>
+          <input id="email-subject" name="subject" type="text" placeholder="URGENT: Verify your account" required />
+
+          <label for="email-body">Body</label>
+          <textarea id="email-body" name="body" rows="5" placeholder="Click here immediately to verify your account or it will be deleted." required></textarea>
+
+          <label for="email-auth">
+            Authentication-Results header
+            <span class="hint">(optional — from a receiver you trust)</span>
+          </label>
+          <input id="email-auth" name="authentication_results" type="text" placeholder="mx.example; spf=fail; dkim=fail; dmarc=fail" />
+
+          <button type="submit"><span>Check Email</span></button>
+        </form>
+      </section>
+    </div>
+
+    <section id="result" class="result-card hidden" aria-live="polite">
+      <div class="verdict-row">
+        <span id="verdict-badge" class="badge"></span>
+        <span id="probability-text" class="probability-text"></span>
+      </div>
+
+      <div class="meter">
+        <div class="meter-track">
+          <span class="meter-tick" style="left:55%"></span>
+          <span class="meter-tick" style="left:75%"></span>
+          <div id="probability-fill" class="meter-fill"></div>
+        </div>
+        <div class="meter-scale">
+          <span>Safe</span>
+          <span>Suspicious</span>
+          <span>Phishing</span>
+        </div>
+      </div>
+
+      <details id="features-details">
+        <summary>Feature breakdown</summary>
+        <p class="features-hint">Marked features contributed positively to the score above.</p>
+        <table id="features-table"><tbody></tbody></table>
+      </details>
+    </section>
+
+    <p id="error" class="error hidden" role="alert"></p>
+  </main>
+
+  <section class="how-it-works" aria-labelledby="how-title">
+    <p class="eyebrow">REVIEWABLE BY DESIGN</p>
+    <h2 id="how-title">From signal to evidence</h2>
+    <ol>
+      <li><span>01</span><div><strong>Extract</strong><p>Inspect URL structure, content patterns, and supplied email-authentication results.</p></div></li>
+      <li><span>02</span><div><strong>Explain</strong><p>Show which features contributed to the heuristic score and verdict.</p></div></li>
+      <li><span>03</span><div><strong>Integrate</strong><p>Use the same model through Python, CLI, REST, JSON, SARIF, or GitHub Actions.</p></div></li>
+    </ol>
+  </section>
+
+  <footer>
+    <p>
+      Heuristic scoring, not a guarantee — see the
+      <a href="https://github.com/omobolajiadeyan/phishguard-ai/blob/main/docs/DETECTION_MODEL.md" target="_blank" rel="noopener">detection model docs</a>
+      for what each feature means and its known limitations. Everything on this page runs
+      entirely in your browser (<a href="https://github.com/omobolajiadeyan/phishguard-ai/blob/main/web/scoring.js" target="_blank" rel="noopener">scoring.js</a>,
+      a verified port of the same Python model) — nothing you type is sent anywhere.
+      For redirect-chain resolution and a REST API, self-host with
+      <code>phishguard serve</code>.
+    </p>
+  </footer>
+
+  <script src="./public-suffix.js"></script>
+  <script src="./scoring.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{"id":"legitimate-001","label":"legitimate","url":"https://example.com/docs","rationale":"Reserved-domain HTTPS documentation baseline","provenance":"synthetic"}
+{"id":"legitimate-002","label":"legitimate","url":"https://example.org/accounting/report","rationale":"Benign path containing a substring that should not dominate scoring","provenance":"synthetic"}
+{"id":"legitimate-003","label":"legitimate","url":"https://www.example.com/products/item-42","rationale":"HTTPS URL with a subdomain, hyphen, and digits","provenance":"synthetic"}
+{"id":"legitimate-004","label":"legitimate","url":"https://example.net/search?q=security","rationale":"Benign query string containing a security-related term","provenance":"synthetic"}
+{"id":"legitimate-005","label":"legitimate","url":"https://www.iana.org/domains/reserved","rationale":"Public standards organization page documenting reserved domains","provenance":"public-documentation"}
+{"id":"legitimate-006","label":"legitimate","url":"https://docs.python.org/3/library/urllib.parse.html","rationale":"Public Python documentation with a deep path and version digit","provenance":"public-documentation"}
+{"id":"legitimate-007","label":"legitimate","url":"https://xn--bcher-kva.example/catalog","rationale":"Reserved-domain punycode IDN that must not be classified as phishing by the IDN signal alone","provenance":"synthetic"}
+{"id":"phishing-001","label":"phishing","url":"http://paypa1-secure-login.example/verify/account?id=12345","rationale":"Synthetic credential lure with brand imitation and verification terms","provenance":"synthetic"}
+{"id":"phishing-002","label":"phishing","url":"http://192.0.2.10/banking/login.php","rationale":"Reserved IP host with banking login path","provenance":"synthetic"}
+{"id":"phishing-003","label":"phishing","url":"http://account-security-alert.example:8080/confirm/password","rationale":"Synthetic account alert using an explicit port and credential terms","provenance":"synthetic"}
+{"id":"phishing-004","label":"phishing","url":"http://verify-wallet-access.example/update/credential","rationale":"Synthetic wallet credential update lure without HTTPS","provenance":"synthetic"}
+{"id":"phishing-005","label":"phishing","url":"http://secure-login.example/account/suspended/validate","rationale":"Synthetic suspended-account validation lure","provenance":"synthetic"}
+{"id":"phishing-006","label":"phishing","url":"http://198.51.100.25:8080/secure/account/verify","rationale":"Reserved IP and non-standard port combined with credential terms","provenance":"synthetic"}
+{"id":"phishing-007","label":"phishing","url":"https://xn--pple-43d.example/login/verify","rationale":"Synthetic punycode hostname combined with credential-lure terms","provenance":"synthetic"}

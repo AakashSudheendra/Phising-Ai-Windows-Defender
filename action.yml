@@ -1,0 +1,90 @@
+name: 'PhishGuard AI Phishing Detector'
+description: 'Explainable offline phishing detection for URLs and emails. Zero external dependencies.'
+author: 'Omobolaji Adeyan'
+
+branding:
+  icon: 'shield'
+  color: 'red'
+
+inputs:
+  urls-file:
+    description: 'Path to a file containing URLs to scan (one per line). Use this or url, not both.'
+    required: false
+    default: ''
+  url:
+    description: 'A single URL to scan. Use this or urls-file, not both.'
+    required: false
+    default: ''
+  sarif-output:
+    description: 'Path to write SARIF 2.1.0 output. Required for GitHub Code Scanning upload.'
+    required: false
+    default: 'phishguard-results.sarif'
+  fail-on-phishing:
+    description: 'Exit with a non-zero code if any phishing URLs are detected.'
+    required: false
+    default: 'true'
+  python-version:
+    description: 'Python version to use (3.10-3.13).'
+    required: false
+    default: '3.12'
+
+outputs:
+  sarif-path:
+    description: 'Path to the SARIF output file written by this action.'
+    value: ${{ inputs.sarif-output }}
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+      with:
+        python-version: ${{ inputs.python-version }}
+
+    - name: Install PhishGuard AI
+      shell: bash
+      run: python -m pip install --quiet "$GITHUB_ACTION_PATH"
+
+    - name: Scan with PhishGuard AI
+      id: scan
+      shell: bash
+      env:
+        URLS_FILE: ${{ inputs.urls-file }}
+        SINGLE_URL: ${{ inputs.url }}
+        SARIF_OUTPUT: ${{ inputs.sarif-output }}
+        FAIL_ON_PHISHING: ${{ inputs.fail-on-phishing }}
+      run: |
+        set +e
+
+        if [ -n "$URLS_FILE" ] && [ -n "$SINGLE_URL" ]; then
+          echo "::error::Inputs 'url' and 'urls-file' are mutually exclusive."
+          exit 1
+        elif [ -n "$URLS_FILE" ]; then
+          phishguard batch "$URLS_FILE" \
+            --output "$SARIF_OUTPUT" \
+            --format sarif \
+            --plain
+        elif [ -n "$SINGLE_URL" ]; then
+          phishguard url "$SINGLE_URL" \
+            --output "$SARIF_OUTPUT" \
+            --format sarif \
+            --plain
+        else
+          echo "::error::Provide either the 'url' or 'urls-file' input."
+          exit 1
+        fi
+
+        EXIT_CODE=$?
+
+        if [ "$FAIL_ON_PHISHING" = "true" ]; then
+          python "$GITHUB_ACTION_PATH/tools/action_result.py" "$SARIF_OUTPUT"
+          SARIF_STATUS=$?
+          if [ "$SARIF_STATUS" -eq 1 ]; then
+            echo "::error::PhishGuard AI detected phishing URLs. See SARIF output for details."
+            exit 1
+          elif [ "$SARIF_STATUS" -eq 2 ]; then
+            exit "$EXIT_CODE"
+          fi
+        fi
+
+        exit $EXIT_CODE

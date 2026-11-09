@@ -1,0 +1,18 @@
+{
+  "name": "phishguard-local-security-service",
+  "version": "1.0.0",
+  "description": "Local security service bridging browser extension, Windows desktop app, and PhishGuard AI detection engine",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node ../../tests/integration_tests/test_security_service.js"
+  },
+  "keywords": [
+    "phishing-detection",
+    "security-service",
+    "phishguard"
+  ],
+  "author": "PhishGuard AI Team",
+  "license": "MIT"
+}

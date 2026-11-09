@@ -1,0 +1,22 @@
+{
+  "name": "phishguard-desktop",
+  "version": "1.0.0",
+  "description": "PhishGuard AI — Real-Time Windows Anti-Phishing Security Center",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build:win": "electron-builder --win",
+    "pack": "electron-builder --dir"
+  },
+  "keywords": [
+    "security",
+    "antiphishing",
+    "windows",
+    "phishguard"
+  ],
+  "author": "PhishGuard AI Team",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.2.0"
+  }
+}

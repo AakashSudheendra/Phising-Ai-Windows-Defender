@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhishGuard — Enterprise Endpoint Security</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <svg class="brand-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+        <div class="brand-titles">
+          <h2>PhishGuard<span class="accent">Security</span></h2>
+          <span class="brand-subtitle">Endpoint Protection</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+        <button class="nav-item active" data-view="dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="3" width="7" height="7"/>
+            <rect x="14" y="3" width="7" height="7"/>
+            <rect x="14" y="14" width="7" height="7"/>
+            <rect x="3" y="14" width="7" height="7"/>
+          </svg>
+          Dashboard
+        </button>
+
+        <button class="nav-item" data-view="history">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          Security History
+        </button>
+
+        <button class="nav-item" data-view="trusted">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+            <polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+          Trusted Websites
+        </button>
+
+        <button class="nav-item" data-view="settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+          Protection Controls
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="system-status">
+          <div class="status-indicator online" id="sidebar-engine-dot"></div>
+          <span id="sidebar-engine-text">Python Engine Online</span>
+        </div>
+        <div class="version-tag">PhishGuard v1.0.0</div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- Top Title Bar -->
+      <header class="content-header">
+        <div class="header-info">
+          <h1 id="page-title">Security Dashboard</h1>
+          <p id="page-subtitle">Real-time Windows anti-phishing overview and threat metrics</p>
+        </div>
+        <div class="header-actions">
+          <button class="btn btn-simulate" id="btn-simulate-threat">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="5 3 19 12 5 21 5 3"/>
+            </svg>
+            Simulate Threat
+          </button>
+        </div>
+      </header>
+
+      <!-- View: Dashboard -->
+      <div class="view-panel active" id="view-dashboard">
+        
+        <!-- Protection Status Banner -->
+        <div class="status-banner banner-active" id="status-banner">
+          <div class="banner-icon-box">
+            <svg class="banner-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
+          <div class="banner-text">
+            <h3 id="banner-title">Real-Time Protection is Active</h3>
+            <p id="banner-desc">PhishGuard is intercepting dangerous links in your browser before they load.</p>
+          </div>
+          <div class="banner-action">
+            <label class="switch">
+              <input type="checkbox" id="dash-protection-toggle" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Metric Stat Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Total URLs Checked</div>
+            <div class="stat-value" id="stat-total">0</div>
+            <div class="stat-sub">Across all browser sessions</div>
+          </div>
+
+          <div class="stat-card stat-card-danger">
+            <div class="stat-label">Phishing Blocked</div>
+            <div class="stat-value danger" id="stat-blocked">0</div>
+            <div class="stat-sub">Threats neutralized</div>
+          </div>
+
+          <div class="stat-card stat-card-warn">
+            <div class="stat-label">Suspicious Warnings</div>
+            <div class="stat-value warn" id="stat-suspicious">0</div>
+            <div class="stat-sub">High-risk indicators flagged</div>
+          </div>
+
+          <div class="stat-card stat-card-safe">
+            <div class="stat-label">Safe Verified</div>
+            <div class="stat-value safe" id="stat-safe">0</div>
+            <div class="stat-sub">Legitimate destinations</div>
+          </div>
+        </div>
+
+        <!-- System & Browser Integration Status -->
+        <div class="integration-cards">
+          <div class="integration-card">
+            <div class="integ-header">
+              <span class="integ-title">Browser Extension Status</span>
+              <span class="integ-badge online" id="badge-extension">Connected</span>
+            </div>
+            <p class="integ-desc">Listening to pre-navigation events via Chrome / Edge Manifest V3.</p>
+          </div>
+
+          <div class="integration-card">
+            <div class="integ-header">
+              <span class="integ-title">Detection Engine</span>
+              <span class="integ-badge online" id="badge-engine">Python 3.12 (Local)</span>
+            </div>
+            <p class="integ-desc">Explainable heuristic decision tree with 19 structural signals.</p>
+          </div>
+
+          <div class="integration-card">
+            <div class="integ-header">
+              <span class="integ-title">Last Threat Scan</span>
+              <span class="integ-badge neutral" id="badge-last-scan">Never</span>
+            </div>
+            <p class="integ-desc">Real-time local event timestamp.</p>
+          </div>
+        </div>
+
+        <!-- Recent Threats Table -->
+        <div class="section-card">
+          <div class="section-header">
+            <h3>Recent Security Detections</h3>
+            <button class="link-btn" id="link-view-all-history">View Full History &rarr;</button>
+          </div>
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>Destination URL</th>
+                  <th>Classification</th>
+                  <th>Risk Score</th>
+                  <th>Action Taken</th>
+                  <th>Key Signal</th>
+                </tr>
+              </thead>
+              <tbody id="recent-threats-tbody">
+                <tr>
+                  <td colspan="6" class="empty-state">No detections recorded yet. Active protection will log events here.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- View: Security History -->
+      <div class="view-panel" id="view-history">
+        <div class="filter-bar">
+          <div class="search-box">
+            <input type="text" id="history-search-input" placeholder="Search by domain or URL...">
+          </div>
+          <div class="filter-dropdown">
+            <select id="history-filter-select">
+              <option value="ALL">All Classifications</option>
+              <option value="PHISHING">Phishing Only</option>
+              <option value="SUSPICIOUS">Suspicious Only</option>
+              <option value="SAFE">Safe Only</option>
+            </select>
+          </div>
+          <button class="btn btn-danger-outline" id="btn-clear-history">Clear History</button>
+        </div>
+
+        <div class="section-card">
+          <div class="table-container">
+            <table class="data-table" id="full-history-table">
+              <thead>
+                <tr>
+                  <th>Timestamp</th>
+                  <th>URL (Redacted)</th>
+                  <th>Classification</th>
+                  <th>Risk Score</th>
+                  <th>Action</th>
+                  <th>Reasons</th>
+                </tr>
+              </thead>
+              <tbody id="full-history-tbody">
+                <!-- Dynamically loaded -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- View: Trusted Websites -->
+      <div class="view-panel" id="view-trusted">
+        <div class="section-card">
+          <div class="section-header">
+            <h3>Manage Whitelisted Domains</h3>
+            <p class="section-desc">Websites listed here will bypass phishing heuristics and load without warning.</p>
+          </div>
+
+          <div class="whitelist-input-row">
+            <input type="text" id="input-trusted-domain" placeholder="e.g. yourcompany.internal or example.com">
+            <button class="btn btn-primary" id="btn-add-trusted">Add Trusted Domain</button>
+          </div>
+
+          <ul class="trusted-list" id="trusted-list">
+            <!-- Dynamically populated -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- View: Protection Controls & Settings -->
+      <div class="view-panel" id="view-settings">
+        <div class="section-card">
+          <div class="section-header">
+            <h3>Real-Time Defense Settings</h3>
+            <p class="section-desc">Configure how PhishGuard AI responds to threats on your Windows PC.</p>
+          </div>
+
+          <div class="settings-list">
+            
+            <div class="setting-item">
+              <div class="setting-info">
+                <h4>Enable Real-Time Protection</h4>
+                <p>Intercepts browser navigation to check URLs before content loads.</p>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="setting-realtime">
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-info">
+                <h4>Windows Desktop Notifications</h4>
+                <p>Display native Windows alerts when high-risk phishing websites are blocked.</p>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="setting-notifications">
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-info">
+                <h4>Dedicated Warning Popup Window</h4>
+                <p>Open a focused warning window in addition to the browser interstitial.</p>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="setting-popup">
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-info">
+                <h4>Protection Policy Mode</h4>
+                <p>Choose strictness for suspicious (medium risk) URLs.</p>
+              </div>
+              <select class="setting-select" id="setting-policy-mode">
+                <option value="standard">Standard: Block Phishing, Warn on Suspicious</option>
+                <option value="strict">Strict: Block both Phishing & Suspicious</option>
+              </select>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-info">
+                <h4>Service Failure Behavior</h4>
+                <p>Action taken when the local detection engine cannot be reached.</p>
+              </div>
+              <select class="setting-select" id="setting-fail-mode">
+                <option value="fail_open">Fail-Open (Allow browsing with alert notification)</option>
+                <option value="fail_closed">Fail-Closed (Block unverified destinations)</option>
+              </select>
+            </div>
+
+            <div class="setting-item">
+              <div class="setting-info">
+                <h4>Launch with Windows</h4>
+                <p>Automatically run PhishGuard in the background system tray at startup.</p>
+              </div>
+              <label class="switch">
+                <input type="checkbox" id="setting-autostart">
+                <span class="slider"></span>
+              </label>
+            </div>
+
+          </div>
+
+          <div class="settings-footer">
+            <button class="btn btn-primary" id="btn-save-settings">Save Settings</button>
+            <span class="save-status" id="save-status"></span>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

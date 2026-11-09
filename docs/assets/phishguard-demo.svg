@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="1040" viewBox="0 0 1440 1040" role="img" aria-labelledby="title desc">
+  <title id="title">PhishGuard AI current CLI validation</title>
+  <desc id="desc">Current PhishGuard AI CLI output from public-safe inputs. A reserved example.com URL scores 25.3 percent and is safe, while a TEST-NET-1 credential lure scores 98.8 percent and is phishing. The full suite separately completed 199 tests with 2 skips and 1 expected failure.</desc>
+  <defs>
+    <linearGradient id="page" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#eef2f7"/>
+    </linearGradient>
+    <linearGradient id="terminal" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#101722"/>
+      <stop offset="1" stop-color="#0b111a"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#0f172a" flood-opacity="0.18"/>
+    </filter>
+  </defs>
+
+  <rect width="1440" height="1040" rx="0" fill="url(#page)"/>
+  <text x="120" y="104" fill="#111827" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="44" font-weight="800">PhishGuard AI current CLI validation</text>
+  <text x="120" y="148" fill="#475569" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24">Real output from current main using public-safe inputs; full suite separately verified.</text>
+
+  <g filter="url(#shadow)">
+    <rect x="120" y="190" width="1200" height="738" rx="26" fill="#080d14"/>
+    <rect x="150" y="220" width="1140" height="678" rx="18" fill="url(#terminal)" stroke="#2f3a48" stroke-width="2"/>
+
+    <circle cx="186" cy="250" r="9" fill="#ff6b6b"/>
+    <circle cx="218" cy="250" r="9" fill="#f8c555"/>
+    <circle cx="250" cy="250" r="9" fill="#36c76b"/>
+    <text x="720" y="258" fill="#94a3b8" font-family="SFMono-Regular, Consolas, Menlo, monospace" font-size="18" text-anchor="middle">phishguard-ai/docs/assets/phishguard-demo.svg</text>
+
+    <g font-family="SFMono-Regular, Consolas, Menlo, monospace" font-size="22">
+      <text x="190" y="318" fill="#38bdf8">$ python phishguard.py url "https://www.example.com/account" --plain</text>
+      <text x="190" y="366" fill="#e5e7eb">PHISHGUARD AI</text>
+      <text x="190" y="400" fill="#94a3b8">Explainable phishing detection | github.com/omobolajiadeyan</text>
+      <text x="190" y="456" fill="#e5e7eb">URL     : https://www.example.com/account</text>
+      <text x="190" y="492" fill="#4ade80">Verdict : SAFE</text>
+      <text x="190" y="528" fill="#e5e7eb">Risk    : #####---------------  25.3%</text>
+
+      <line x1="190" y1="570" x2="1250" y2="570" stroke="#334155" stroke-width="2"/>
+
+      <text x="190" y="626" fill="#38bdf8">$ python phishguard.py url "http://192.0.2.10/secure-login/verify" --verbose --plain</text>
+      <text x="190" y="674" fill="#e5e7eb">URL     : http://192.0.2.10/secure-login/verify</text>
+      <text x="190" y="710" fill="#fb7185">Verdict : PHISHING</text>
+      <text x="190" y="746" fill="#e5e7eb">Risk    : ####################  98.8%</text>
+    </g>
+
+    <g font-family="SFMono-Regular, Consolas, Menlo, monospace" font-size="18">
+      <rect x="190" y="782" width="1060" height="82" rx="12" fill="#0f172a" stroke="#334155"/>
+      <text x="218" y="816" fill="#c084fc">Triggered evidence</text>
+      <text x="218" y="848" fill="#cbd5e1">has_ip_address: 1</text>
+      <text x="460" y="848" fill="#cbd5e1">phishing_keywords: 3</text>
+      <text x="754" y="848" fill="#cbd5e1">path_depth: 2</text>
+      <text x="976" y="848" fill="#cbd5e1">url_entropy: 2.2464</text>
+    </g>
+  </g>
+
+  <g font-family="Inter, Segoe UI, Arial, sans-serif" font-size="19" font-weight="700">
+    <rect x="120" y="958" width="260" height="42" rx="21" fill="#dcfce7" stroke="#22c55e"/>
+    <text x="250" y="985" fill="#166534" text-anchor="middle">Synthetic inputs only</text>
+    <rect x="400" y="958" width="192" height="42" rx="21" fill="#dbeafe" stroke="#3b82f6"/>
+    <text x="496" y="985" fill="#1d4ed8" text-anchor="middle">Runs offline</text>
+    <rect x="612" y="958" width="224" height="42" rx="21" fill="#fef3c7" stroke="#f59e0b"/>
+    <text x="724" y="985" fill="#92400e" text-anchor="middle">199 tests completed</text>
+    <rect x="856" y="958" width="306" height="42" rx="21" fill="#f1f5f9" stroke="#94a3b8"/>
+    <text x="1009" y="985" fill="#334155" text-anchor="middle">Generated August 24, 2026</text>
+  </g>
+</svg>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PhishGuard AI</title>
+  <link rel="stylesheet" href="./popup.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="header">
+      <div>
+        <h1>PhishGuard AI</h1>
+        <p>Private phishing-risk check for everyday browsing</p>
+      </div>
+      <span id="status-dot" class="status-dot" aria-hidden="true"></span>
+    </header>
+
+    <section class="summary" aria-label="Privacy and operating mode">
+      <span>Offline scoring</span>
+      <span>No API key</span>
+      <span>No browsing history</span>
+    </section>
+
+    <section class="current-tab">
+      <span class="label">Current tab</span>
+      <p id="current-url" class="url">Loading active tab...</p>
+      <button id="scan-current" type="button">Check current page</button>
+    </section>
+
+    <form id="manual-form" class="manual">
+      <label for="manual-url">Paste or type a URL</label>
+      <div class="input-row">
+        <input id="manual-url" name="url" type="text" inputmode="url" placeholder="www.yahoo.com" autocomplete="off" />
+        <button type="submit">Check</button>
+      </div>
+      <div class="sample-row" aria-label="Sample URLs">
+        <button type="button" class="sample-button" data-url="www.yahoo.com">Try Yahoo</button>
+        <button type="button" class="sample-button" data-url="http://192.0.2.10/secure-login/verify">Try risky sample</button>
+      </div>
+    </form>
+
+    <section id="result" class="result hidden" aria-live="polite">
+      <div class="verdict-row">
+        <div>
+          <span id="verdict" class="verdict"></span>
+          <span id="risk-label" class="risk-label"></span>
+        </div>
+        <span id="score" class="score"></span>
+      </div>
+      <div class="bar-track"><div id="bar-fill" class="bar-fill"></div></div>
+      <p id="guidance" class="guidance"></p>
+      <details>
+        <summary>Why this score?</summary>
+        <dl id="features" class="features"></dl>
+      </details>
+    </section>
+
+    <p id="error" class="error hidden" role="alert"></p>
+
+    <footer>
+      <a href="https://github.com/omobolajiadeyan/phishguard-ai" target="_blank" rel="noopener">Project evidence</a>
+      <span id="mode-label">Extension-ready prototype</span>
+    </footer>
+  </main>
+
+  <script src="./public-suffix.js"></script>
+  <script src="./scoring.js"></script>
+  <script src="./popup.js"></script>
+</body>
+</html>

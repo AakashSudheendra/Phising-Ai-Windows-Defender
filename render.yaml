@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: phishguard-ai-demo
+    runtime: python
+    plan: free
+    branch: main
+    buildCommand: pip install .
+    # Render's proxy hides the originating client IP from this stdlib server.
+    # Disable the per-IP limiter here so one proxy address cannot throttle
+    # every visitor; production edge limits should be configured in Render.
+    startCommand: phishguard serve --host 0.0.0.0 --port $PORT --rate-limit 0
+    healthCheckPath: /healthz
+    autoDeployTrigger: commit
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.7

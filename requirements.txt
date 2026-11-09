@@ -1,0 +1,7 @@
+# No third-party dependencies — pure Python standard library
+# Python 3.10+ required
+#
+# Optional: install these to extend with real ML training
+# scikit-learn>=1.3.0
+# pandas>=2.0.0
+# matplotlib>=3.7.0

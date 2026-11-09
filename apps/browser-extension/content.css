@@ -1,0 +1,217 @@
+/* PhishGuard Professional White and Red In-Page Alert Modal */
+.phishguard-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 23, 42, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  animation: phishguard-fade-in 0.2s ease-out;
+}
+
+@keyframes phishguard-fade-in {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.phishguard-modal {
+  width: 90%;
+  max-width: 520px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+  padding: 24px;
+  color: #1e293b;
+  position: relative;
+  overflow: hidden;
+}
+
+.phishguard-modal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #dc2626;
+}
+
+.phishguard-header {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.phishguard-icon-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  color: #dc2626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.phishguard-title-box h3 {
+  font-size: 16px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 3px 0;
+  letter-spacing: -0.02em;
+}
+
+.phishguard-title-box p {
+  font-size: 12.5px;
+  color: #64748b;
+  margin: 0;
+}
+
+.phishguard-threat-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 800;
+  background: #fef2f2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+
+.phishguard-url-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 3px solid #dc2626;
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+}
+
+.phishguard-url-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #991b1b;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
+}
+
+.phishguard-url-text {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #0f172a;
+  word-break: break-all;
+}
+
+.phishguard-reasons-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 18px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.phishguard-reasons-list li {
+  font-size: 12px;
+  color: #334155;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-left: 3px solid #dc2626;
+  padding: 8px 10px;
+  border-radius: 6px;
+  line-height: 1.4;
+}
+
+.phishguard-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.phishguard-btn-close {
+  width: 100%;
+  padding: 11px;
+  background: #dc2626;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 13px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.15s ease;
+  box-shadow: 0 1px 3px rgba(220, 38, 38, 0.25);
+}
+
+.phishguard-btn-close:hover {
+  background: #b91c1c;
+  box-shadow: 0 2px 6px rgba(220, 38, 38, 0.35);
+}
+
+.phishguard-bypass-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+.phishguard-bypass-row label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.phishguard-bypass-row input[type="checkbox"] {
+  accent-color: #dc2626;
+  width: 14px;
+  height: 14px;
+}
+
+.phishguard-btn-proceed {
+  background: transparent;
+  color: #64748b;
+  border: 1px solid #cbd5e1;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.phishguard-btn-proceed:not(:disabled) {
+  background: #ffffff;
+  color: #dc2626;
+  border-color: #fca5a5;
+}
+
+.phishguard-btn-proceed:not(:disabled):hover {
+  background: #fef2f2;
+}
+
+.phishguard-btn-proceed:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhishGuard Security — Warning</title>
+  <link rel="stylesheet" href="alert.css">
+</head>
+<body>
+  <div class="alert-window-container">
+    
+    <!-- Top Warning Header -->
+    <div class="alert-top">
+      <div class="alert-icon-wrapper" id="alert-icon-wrapper">
+        <svg class="alert-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M12 8v4M12 16h.01"/>
+        </svg>
+      </div>
+      <div class="alert-header-text">
+        <div class="tag-row">
+          <span class="alert-tag" id="alert-tag">PHISHING BLOCKED</span>
+          <span class="source-tag">Intercepted Link (WhatsApp / Web)</span>
+        </div>
+        <h2 id="alert-heading">Pre-Navigation Security Interception</h2>
+        <p>PhishGuard prevented this dangerous destination from opening in your browser.</p>
+      </div>
+    </div>
+
+    <!-- Targeted Destination Box -->
+    <div class="url-card">
+      <div class="url-label">Attempted Destination URL:</div>
+      <div class="url-text" id="alert-url">http://unknown-destination</div>
+    </div>
+
+    <!-- Risk Toggle Tabs -->
+    <div class="risk-toggle-bar">
+      <button class="toggle-tab active" id="tab-overview" type="button">Risk Assessment</button>
+      <button class="toggle-tab" id="tab-technical" type="button">Technical Signals</button>
+    </div>
+
+    <!-- Threat Level Card -->
+    <div class="threat-info-row">
+      <div class="threat-chip">
+        <span class="chip-label">Risk Level:</span>
+        <span class="chip-val high" id="alert-risk-level">HIGH RISK</span>
+      </div>
+      <div class="threat-chip">
+        <span class="chip-label">Phishing Probability:</span>
+        <span class="chip-val high" id="alert-confidence">95%</span>
+      </div>
+    </div>
+
+    <!-- Tab Content 1: Reasons Panel -->
+    <div class="panel-content active" id="panel-reasons">
+      <div class="reasons-panel">
+        <h3>Why did PhishGuard block this website?</h3>
+        <ul id="alert-reasons-list">
+          <li>Evaluating structural heuristic indicators...</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Tab Content 2: Technical Breakdown -->
+    <div class="panel-content" id="panel-technical">
+      <div class="reasons-panel">
+        <h3>Extracted Heuristic Features</h3>
+        <div class="alert-tech-grid" id="alert-tech-body">
+          <!-- Dynamically populated -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Primary Action Buttons -->
+    <div class="alert-actions">
+      <!-- Most prominent button: Close and do not go to website -->
+      <button class="btn btn-close-safe" id="btn-alert-safety">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+        Close & Cancel (Do Not Go to Website)
+      </button>
+
+      <div class="bypass-box">
+        <label class="bypass-confirm-label">
+          <input type="checkbox" id="chk-alert-confirm">
+          <span>I understand this destination is flagged as dangerous</span>
+        </label>
+        <button class="btn btn-proceed" id="btn-alert-proceed" disabled>
+          Proceed Anyway (Unsafe)
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="alert-footer">
+      <span>Protected by <strong>PhishGuard Enterprise Security</strong> • Real-Time Endpoint Defense</span>
+    </div>
+
+  </div>
+
+  <script src="alert.js"></script>
+</body>
+</html>
